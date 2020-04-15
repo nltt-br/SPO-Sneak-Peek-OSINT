@@ -8,13 +8,11 @@ This Class return subdomains and emails info
 
 '''
 
-import requests
-import json
+import requests, json
 
+class Consumer_ThreatCrowd_API():
 
-class Subdomains():
-
-    def getSubdomains(self, domain):
+    def get_subdomains(self, domain):
         # get info for domain on threat crowd
         response = requests.get("http://www.threatcrowd.org/searchApi/v2/domain/report/", params={"domain": domain})
 
@@ -25,4 +23,35 @@ class Subdomains():
         else:
             return ""
 
+    def get_email(self, email):
+        # get info for email on threat crowd
+        response = requests.get("http://www.threatcrowd.org/searchApi/v2/domain/report/", params={"email": email})
 
+        email_info = json.loads(response.text)
+
+        if email_info['response_code'] == '1':
+            return email_info['domains']
+        else:
+            return ""
+
+    def get_ip(self, ip):
+        # get info for ip on threat crowd
+        response = requests.get("http://www.threatcrowd.org/searchApi/v2/domain/report/", params={"ip": ip})
+
+        ip_info = json.loads(response.text)
+
+        if ip_info['response_code'] == '1':
+            return ip_info['last_resolved']
+        else:
+            return ""
+
+    def get_resource(self, resource):
+        # get info for hash file on threat crowd
+        response = requests.get("http://www.threatcrowd.org/searchApi/v2/domain/report/", params={"resource": resource})
+
+        resource_info = json.loads(response.text)
+
+        if resource['response_code'] == '1':
+            return resource['scans']
+        else:
+            return ""
