@@ -25,7 +25,7 @@ class Consumer_ThreatCrowd_API():
 
     def get_email(self, email):
         # get info for email on threat crowd
-        response = requests.get("http://www.threatcrowd.org/searchApi/v2/domain/report/", params={"email": email})
+        response = requests.get("https://www.threatcrowd.org/searchApi/v2/email/report/", params={"email": email})
 
         email_info = json.loads(response.text)
 
@@ -36,7 +36,7 @@ class Consumer_ThreatCrowd_API():
 
     def get_ip(self, ip):
         # get info for ip on threat crowd
-        response = requests.get("http://www.threatcrowd.org/searchApi/v2/domain/report/", params={"ip": ip})
+        response = requests.get("https://www.threatcrowd.org/searchApi/v2/ip/report/", params={"ip": ip})
 
         ip_info = json.loads(response.text)
 
@@ -47,7 +47,7 @@ class Consumer_ThreatCrowd_API():
 
     def get_resource(self, resource):
         # get info for hash file on threat crowd
-        response = requests.get("http://www.threatcrowd.org/searchApi/v2/domain/report/", params={"resource": resource})
+        response = requests.get("https://www.threatcrowd.org/searchApi/v2/file/report/", params={"resource": resource})
 
         resource_info = json.loads(response.text)
 
