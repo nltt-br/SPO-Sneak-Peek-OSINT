@@ -4,7 +4,7 @@ __Author__ = "Victor de Queiroz"
 Class for APIv2 Treat Crowd
 http://www.threatcrowd.org
 
-This Class return subdomains and emails info
+This Class return subdomains, emails, ip and hash/file
 
 '''
 
